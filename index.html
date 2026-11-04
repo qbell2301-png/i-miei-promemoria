@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#10131c"><link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="icon.svg"><title>I miei promemoria</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+<header><div><div class="eyebrow">IL TUO SPAZIO PERSONALE</div><h1>I miei <span>promemoria</span></h1><p id="today"></p></div><button id="installBtn" class="ghost" hidden>＋ Installa</button></header>
+<section class="hero"><div><div class="eyebrow">PANORAMICA</div><h2>Non dimenticare<br>le cose importanti.</h2><p>Organizza impegni, scadenze e idee in un unico posto.</p></div><div class="heroicon">◷</div></section>
+<section class="stats"><article><b id="todoCount">0</b><span>Da fare</span></article><article><b id="dueCount">0</b><span>In scadenza</span></article><article><b id="noteCount">0</b><span>Note</span></article></section>
+<nav class="tabs"><button class="tab active" data-tab="tasks">Attività</button><button class="tab" data-tab="notes">Note</button><button class="tab" data-tab="settings">Impostazioni</button></nav>
+<main>
+<section id="tasks" class="panel">
+<div class="sectionhead"><div><div class="eyebrow">ORGANIZZAZIONE</div><h2>Le tue attività</h2></div><button id="addBtn" class="primary">＋ Nuovo</button></div>
+<div class="filters"><button class="filter active" data-filter="all">Tutte</button><button class="filter" data-filter="open">Da fare</button><button class="filter" data-filter="done">Completate</button></div>
+<div id="taskList" class="list"></div>
+</section>
+<section id="notes" class="panel" hidden><div class="sectionhead"><div><div class="eyebrow">APPUNTI</div><h2>Note personali</h2></div><button id="addNoteBtn" class="primary">＋ Nuova nota</button></div><div id="noteList" class="list"></div></section>
+<section id="settings" class="panel" hidden><div class="eyebrow">NOTIFICHE</div><h2>Impostazioni</h2><div class="setting"><div><b>Notifiche push</b><p>Ricevi avvisi anche quando la web app non è aperta.</p></div><button id="pushBtn" class="primary">Attiva notifiche</button></div><p id="pushStatus" class="muted">Non ancora configurate.</p><div class="setting"><div><b>Installazione</b><p>Aggiungi l'app alla schermata Home del telefono.</p></div><button id="installBtn2" class="ghost">Come fare</button></div><p class="notice">Le notifiche push richiedono che il progetto venga pubblicato su un indirizzo HTTPS e collegato al server incluso nella cartella. Le notifiche locali funzionano mentre la pagina è aperta; per gli avvisi ad app chiusa serve la configurazione del server.</p></section>
+</main>
+<footer>Creato per te · I tuoi impegni, sotto controllo.</footer>
+</div>
+<dialog id="taskDialog"><form id="taskForm"><div class="dialoghead"><h2 id="dialogTitle">Nuovo promemoria</h2><button type="button" class="x" data-close>×</button></div>
+<label>Titolo<input id="title" required maxlength="90" placeholder="Es. Chiamare il dentista"></label>
+<label>Dettagli<textarea id="details" rows="2" placeholder="Aggiungi una nota (facoltativo)"></textarea></label>
+<div class="two"><label>Tipo<select id="type"><option value="reminder">Promemoria</option><option value="deadline">Scadenza</option><option value="repeat">Ricorrenza</option><option value="todo">Da fare</option></select></label><label>Ripeti<select id="repeat"><option value="none">Mai</option><option value="daily">Ogni giorno</option><option value="weekly">Ogni settimana</option><option value="monthly">Ogni mese</option><option value="yearly">Ogni anno</option></select></label></div>
+<label>Data e ora<input id="when" type="datetime-local" required></label>
+<label>Avvisami prima<select id="advance"><option value="0">All'orario scelto</option><option value="10">10 minuti prima</option><option value="30">30 minuti prima</option><option value="60">1 ora prima</option><option value="1440">1 giorno prima</option><option value="2880">2 giorni prima</option></select></label>
+<div class="actions"><button type="button" class="ghost" data-close>Annulla</button><button class="primary" type="submit">Salva</button></div></form></dialog>
+<dialog id="noteDialog"><form id="noteForm"><div class="dialoghead"><h2>Nota personale</h2><button type="button" class="x" data-close>×</button></div><label>Titolo<input id="noteTitle" required maxlength="80"></label><label>Testo<textarea id="noteBody" rows="6" required></textarea></label><div class="actions"><button type="button" class="ghost" data-close>Annulla</button><button class="primary">Salva nota</button></div></form></dialog>
+<div id="toast" role="status"></div><script src="app.js"></script>
+</body></html>
